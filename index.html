@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <title>Document</title>
+    <link rel="icon" href="calculator-2017-10-10.png">
+    <title>BMI Calculator</title>
     <style>
         .container {
             text-align: center;
@@ -15,6 +15,8 @@
             align-items: center;
             color: white;
             border: 2px blue solid;
+
+
         }
 
         html,
@@ -55,11 +57,11 @@
 
     <script>
         const intervals = [
-            { min: 0, max: 18.5, categ: "underweight", emoji: "🦴" },
-            { min: 18.6, max: 24.9, categ: "normal", emoji: "😒" },
-            { min: 25, max: 29.9, categ: "overweight", emoji: "💪" },
-            { min: 30, max: 34.9, categ: "obese", emoji: "🐖" },
-            { min: 35, max: 100, categ: "morbidly obese", emoji: "🦍" }
+            { min: 0, max: 18.5, categ: "Underweight", emoji: "🦴" },
+            { min: 18.6, max: 24.9, categ: "Normal", emoji: "😒" },
+            { min: 25, max: 29.9, categ: "Pverweight", emoji: "💪" },
+            { min: 30, max: 34.9, categ: "Obese", emoji: "🐖" },
+            { min: 35, max: 100, categ: "Morbidly Obese", emoji: "🦍" }
 
         ]
 
@@ -71,8 +73,13 @@
         */
 
         function calculate() {
-            let weight = document.getElementById("weight").value
-            let height = document.getElementById("height").value
+
+            if (document.getElementById("weight").value == "" || document.getElementById("height").value == "") {
+                alert("Please enter your weight and height first")
+            }
+
+            let weight = +document.getElementById("weight").value
+            let height = +document.getElementById("height").value
 
             let bmi = (weight / ((height / 100) ** 2)).toFixed(2)
 
